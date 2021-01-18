@@ -16,7 +16,7 @@ config :hello_web, HelloWeb.Endpoint,
       "node_modules/webpack/bin/webpack.js",
       "--mode",
       "development",
-      "--watch-stdin",
+      "--watch",
       cd: Path.expand("../apps/hello_web/assets", __DIR__)
     ]
   ]
