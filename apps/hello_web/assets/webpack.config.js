@@ -1,53 +1,205 @@
-const path = require('path');
-const glob = require('glob');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// destination directory relative to current file.
+const DEST_DIR = '../priv/static'
+// public path for serving static files in destination directory.
+const PUBLIC_PATH = '/'
 
-module.exports = (env, options) => {
-  const devMode = options.mode !== 'production';
+const path = require('path')
+const glob = require('glob')
 
+// Webpack
+const { merge } = require('webpack-merge')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+
+// PostCSS
+const pcImport = require('postcss-import')
+const pcNested = require('postcss-nested')
+const pcAutoprefixer = require('autoprefixer')
+
+// TailwindCSS
+const tailwindcss = require('tailwindcss')
+
+// Locations
+const srcStatic = resolveSrc('static/')
+const destRoot = resolveDest('./')
+const destJS = resolveDest('js/')
+const destCSS = resolveDest('css/')
+const destFont = resolveDest('fonts/')
+const destImage = resolveDest('images/')
+const publicFont = path.join(PUBLIC_PATH, path.relative(destRoot, destFont))
+const publicImage = path.join(PUBLIC_PATH, path.relative(destRoot, destImage))
+
+function resolveSrc(relativePath = '') {
+  const root = path.resolve(__dirname)
+  const absPath = path.join(root, relativePath)
+  return absPath
+}
+
+function resolveDest(relativePath = '') {
+  const root = path.resolve(__dirname, DEST_DIR)
+  const absPath = path.join(root, relativePath)
+  return absPath
+}
+
+// Webpack Configurations
+module.exports = (_env, { mode }) => {
+  const isProd = mode === 'production'
+
+  if (isProd) {
+    // required for purge option of TailwindCSS.
+    process.env.NODE_ENV = mode
+  }
+
+  return merge([
+    loadJS(isProd),
+    loadCSS(),
+    loadFont(),
+    loadImage(),
+    copyStatic(),
+  ])
+}
+
+function loadJS(isProd) {
   return {
-    optimization: {
-      minimizer: [
-        new TerserPlugin({ cache: true, parallel: true, sourceMap: devMode }),
-        new OptimizeCSSAssetsPlugin({})
-      ]
+    resolve: {
+      extensions: ['.js'],
     },
     entry: {
-      'app': glob.sync('./vendor/**/*.js').concat(['./js/app.js'])
+      app: [].concat(
+        resolveSrc('index.js'),
+        glob.sync(resolveSrc('vendor/**/*.js'))
+      ),
     },
     output: {
       filename: '[name].js',
-      path: path.resolve(__dirname, '../priv/static/js'),
-      publicPath: '/js/'
+      path: destJS,
     },
-    devtool: devMode ? 'eval-cheap-module-source-map' : undefined,
     module: {
       rules: [
         {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader'
-          }
+            loader: 'babel-loader',
+          },
         },
+      ],
+    },
+    devtool: isProd ? 'nosources-source-map' : 'eval-cheap-module-source-map',
+    optimization: {
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: { sourceMap: true },
+          parallel: true,
+        }),
+      ],
+    },
+  }
+}
+
+function loadCSS() {
+  const pcPlugins = [pcImport, tailwindcss, pcNested, pcAutoprefixer]
+
+  return {
+    resolve: {
+      extensions: ['.css'],
+    },
+    module: {
+      rules: [
         {
-          test: /\.[s]?css$/,
+          test: /\.css$/,
           use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'sass-loader',
+            {
+              loader: MiniCSSExtractPlugin.loader,
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                importLoaders: 1,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                postcssOptions: {
+                  ident: 'postcss',
+                  plugins: pcPlugins,
+                },
+              },
+            },
           ],
-        }
-      ]
+        },
+      ],
     },
     plugins: [
-      new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-      new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
-    ]
-    .concat(devMode ? [new HardSourceWebpackPlugin()] : [])
+      new MiniCSSExtractPlugin({
+        filename: path.join(path.relative(destJS, destCSS), '[name].css'),
+      }),
+    ],
+    optimization: {
+      minimizer: [
+        new CssMinimizerPlugin({
+          sourceMap: true,
+        }),
+      ],
+    },
   }
-};
+}
+
+function loadFont() {
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.(eot|woff|woff2|ttf)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: path.relative(destJS, destFont),
+                publicPath: publicFont,
+              },
+            },
+          ],
+        },
+      ],
+    },
+  }
+}
+
+function loadImage() {
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.(png|jpe?g|gif|svg)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: path.relative(destJS, destImage),
+                publicPath: publicImage,
+              },
+            },
+          ],
+        },
+      ],
+    },
+  }
+}
+
+function copyStatic() {
+  return {
+    plugins: [
+      new CopyWebpackPlugin({
+        patterns: [{ from: srcStatic, to: destRoot }],
+      }),
+    ],
+  }
+}

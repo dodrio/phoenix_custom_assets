@@ -1,0 +1,29 @@
+@layer components {
+  nav[role='navigation'] {
+    @apply flex justify-end;
+    @apply py-4;
+  }
+
+  .phx-logo {
+    @apply hidden;
+  }
+
+  .phx-hero {
+    @apply px-6 py-16 mb-8;
+    @apply text-center text-lg bg-neutral-100 rounded-md;
+  }
+
+  .phx-hero input {
+    background: #ffffff;
+  }
+
+  .row {
+    @apply flex justify-around;
+  }
+
+  .column {
+    h2 {
+      @apply font-semibold;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+/**
+ * Inter font family
+ *
+ * + A beautiful font for UI design and is completely open-source and free.
+ * + Website: https://rsms.me/inter/
+ * + Current Version: 3.13
+ *
+ */
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('./Inter-var/Inter-roman.var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('./Inter-var/Inter-italic.var.woff2') format('woff2');
+}
