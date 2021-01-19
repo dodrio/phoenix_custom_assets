@@ -3,6 +3,8 @@ import 'phoenix_html'
 import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
 
+import Alpine from 'alpinejs'
+
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
@@ -12,6 +14,12 @@ const csrfToken = document
 
 const liveSocket = new LiveSocket('/live', Socket, {
   params: { _csrf_token: csrfToken },
+  // https://dockyard.com/blog/2020/12/21/optimizing-user-experience-with-liveview
+  onBeforeElUpdated(from, to) {
+    if (from.__x) {
+      Alpine.clone(from.__x, to)
+    }
+  },
 })
 
 // Show progress bar on live navigation and form submits
