@@ -28,7 +28,15 @@ $ mix phx.new --umbrella --app hello --live --no-ecto phx-webpack-example
 
 ### For umbrella projects
 
-1. Replace your `<app>_web/assets/` with `hello_web/assets/` in this project.
+1. Replace your `apps/<app>_web/assets` with `apps/hello_web/assets`:
+
+```sh
+$ rm -rf <app>_web/assets
+$ svn export https://github.com/c4710n/phx-webpack-example/trunk/apps/hello_web/assets apps/<app>_web/assets
+```
+
+> SVN provides `export` function which is useful for copying a sub-directory from a repo.
+
 2. Adjust `config/dev.exs` to fit Webpack 5:
 
 ```ex
@@ -45,7 +53,12 @@ config :hello, HelloWeb.Endpoint,
 
 ### For non-umbrella projects
 
-1. Replace your `assets/` with `hello_web/assets/` in this project.
+1. Replace your `assets` with `apps/hello_web/assets`:
+
+```sh
+$ rm -rf assets
+$ svn export  https://github.com/c4710n/phx-webpack-example/trunk/apps/hello_web/assets assets
+```
 
 2. Adjust `assets/package.json`:
 
