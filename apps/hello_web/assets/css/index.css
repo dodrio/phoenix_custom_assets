@@ -7,6 +7,8 @@
 @import './phoenix-alert.css';
 @import './phoenix-form.css';
 
+@import './ext-prose.css';
+
 /* hide iframe of phoenix-live-reload */
 iframe[hidden] {
   display: none;
