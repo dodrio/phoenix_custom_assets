@@ -15,10 +15,12 @@ const csrfToken = document
 const liveSocket = new LiveSocket('/live', Socket, {
   params: { _csrf_token: csrfToken },
   // https://dockyard.com/blog/2020/12/21/optimizing-user-experience-with-liveview
-  onBeforeElUpdated(from, to) {
-    if (from.__x) {
-      Alpine.clone(from.__x, to)
-    }
+  dom: {
+    onBeforeElUpdated(from, to) {
+      if (from.__x) {
+        Alpine.clone(from.__x, to)
+      }
+    },
   },
 })
 
