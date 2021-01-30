@@ -87,6 +87,10 @@ config :hello, HelloWeb.Endpoint,
       # ...
 ```
 
+## More
+
+- [phx_tailwind_generators](https://github.com/wintermeyer/phx_tailwind_generators)
+
 ## License
 
 MIT
