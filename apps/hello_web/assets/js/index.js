@@ -6,7 +6,6 @@ import { LiveSocket } from 'phoenix_live_view'
 import Alpine from 'alpinejs'
 
 import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 
 const csrfToken = document
   .querySelector("meta[name='csrf-token']")
@@ -25,6 +24,7 @@ const liveSocket = new LiveSocket('/live', Socket, {
 })
 
 // Show progress bar on live navigation and form submits
+NProgress.configure({ showSpinner: false })
 window.addEventListener('phx:page-loading-start', (info) => NProgress.start())
 window.addEventListener('phx:page-loading-stop', (info) => NProgress.done())
 
