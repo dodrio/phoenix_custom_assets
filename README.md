@@ -1,6 +1,6 @@
 # phx-webpack-example
 
-> An alternative for Phoenix assets dir.
+> An alternative `assets` dir for Phoenix.
 
 ## Preface
 
