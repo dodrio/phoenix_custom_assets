@@ -23,7 +23,7 @@ module.exports = {
       black: colors.black,
 
       primary: colors.rose,
-      neutral: colors.coolGray,
+      neutral: colors.blueGray,
       info: colors.blue,
       success: colors.green,
       danger: colors.red,
