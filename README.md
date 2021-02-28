@@ -1,6 +1,6 @@
 # phx-webpack-example
 
-> An alternative `assets` dir for Phoenix.
+> An alternative `assets` dir aiming to integrate [TailwindCSS](https://tailwindcss.com/) and [Alpine.js](https://github.com/alpinejs/alpine) for Phoenix.
 
 ## Preface
 
