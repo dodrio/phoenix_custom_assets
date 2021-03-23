@@ -1,6 +1,6 @@
 @layer components {
   .prose-zh {
     @apply text-justify;
-    @apply break-words;
+    @apply break-all;
   }
 }
