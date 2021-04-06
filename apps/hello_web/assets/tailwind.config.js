@@ -2,12 +2,13 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
+  mode: 'jit',
   purge: {
     content: [
       '../lib/**/*.html.eex',
       '../lib/**/*.html.leex',
-      '../lib/**/views/**/*.ex',
-      '../lib/**/live/**/*.ex',
+      '../lib/**/*.ex',
+      '../lib/**/*.exs',
       './js/**/*.js',
     ],
   },
