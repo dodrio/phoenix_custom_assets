@@ -23,11 +23,12 @@ $ mix phx.new demo --umbrella --live
 
 ## Features
 
-- TailwindCSS with useful plugins
+- TailwindCSS with JIT option and useful plugins:
   - `@tailwindcss/forms`
   - `@tailwindcss/typography`
   - `@tailwindcss/aspect-ratio`
 - Alpine.js with [necessary patch](https://github.com/c4710n/phx-webpack-example/blob/2eac11c8d18247088b80109bb46847a4138fc25d/apps/hello_web/assets/js/index.js#L16)
+- Compatible with Phoenix LiveView
 - set [Inter var](https://rsms.me/inter/) as default font
 - [theme-sensitive](https://github.com/c4710n/phx-webpack-example/blob/2eac11c8d18247088b80109bb46847a4138fc25d/apps/hello_web/assets/css/custom-nprogress.css#L7) nprogress
 - Webpack 5 + modular configuration, it supports:
