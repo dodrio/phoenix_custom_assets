@@ -23,7 +23,7 @@ $ mix phx.new demo --umbrella --live
 
 ## Features
 
-- TailwindCSS with JIT option and useful plugins:
+- TailwindCSS with [JIT mode](https://tailwindcss.com/docs/just-in-time-mode) and useful plugins:
   - `@tailwindcss/forms`
   - `@tailwindcss/typography`
   - `@tailwindcss/aspect-ratio`
