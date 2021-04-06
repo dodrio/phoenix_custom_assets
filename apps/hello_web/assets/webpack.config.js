@@ -45,13 +45,11 @@ function resolveDest(relativePath = '') {
 
 // Webpack Configurations
 module.exports = (_env, { mode }) => {
+  // setup env according mode
+  // required by jit option and purge option of TailwindCSS.
+  process.env.NODE_ENV = mode
+
   const isProd = mode === 'production'
-
-  if (isProd) {
-    // required for purge option of TailwindCSS.
-    process.env.NODE_ENV = mode
-  }
-
   return merge([
     loadJS(isProd),
     loadCSS(),
