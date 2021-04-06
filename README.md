@@ -40,7 +40,9 @@ $ mix phx.new demo --umbrella --live
 
 ```sh
 $ rm -rf <app>_web/assets
-$ svn export https://github.com/c4710n/phx-webpack-example/trunk/apps/hello_web/assets apps/<app>_web/assets
+$ svn export \
+  https://github.com/c4710n/phx-webpack-example/trunk/apps/hello_web/assets \
+  apps/<app>_web/assets
 ```
 
 > SVN provides `export` function which is useful for copying a sub-directory from a repo.
@@ -55,7 +57,7 @@ config :hello, HelloWeb.Endpoint,
       "node_modules/webpack/bin/webpack.js",
       "--mode",
       "development",
-      "--watch",       # Webpack 5
+      "--watch",       # watch option for Webpack 5
       # ...
 ```
 
@@ -65,10 +67,12 @@ config :hello, HelloWeb.Endpoint,
 
 ```sh
 $ rm -rf assets
-$ svn export  https://github.com/c4710n/phx-webpack-example/trunk/apps/hello_web/assets assets
+$ svn export \
+  https://github.com/c4710n/phx-webpack-example/trunk/apps/hello_web/assets \
+  assets
 ```
 
-2. Adjust `assets/package.json`:
+2. Adjust `assets/package.json` in order to fix the path:
 
 ```json
 // ...
@@ -91,7 +95,7 @@ config :hello, HelloWeb.Endpoint,
       "node_modules/webpack/bin/webpack.js",
       "--mode",
       "development",
-      "--watch",       # Webpack 5
+      "--watch",       # watch option for Webpack 5
       # ...
 ```
 
