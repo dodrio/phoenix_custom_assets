@@ -2,6 +2,8 @@
 
 > An alternative `assets` dir aiming to integrate [TailwindCSS](https://tailwindcss.com/) and [Alpine.js](https://github.com/alpinejs/alpine) for Phoenix.
 
+## How it works?
+
 This project **generates** [a solid foundation](https://github.com/c4710n/phx-webpack-example/tree/master/apps/hello_web/assets) for working with TailwindCSS and Alpine.js.
 
 > It works by generating code into the user's application instead of using a library, the user has complete freedom to modify the code so it works best with their app.
