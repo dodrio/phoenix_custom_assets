@@ -61,18 +61,18 @@ $ svn export \
 
 > SVN provides `export` function which is useful for copying a sub-directory from a repo.
 
-2. Adjust `config/dev.exs` to fit Webpack 5:
+2. Adjust `config/dev.exs` to setup `watchers`:
 
 ```ex
 config :hello, HelloWeb.Endpoint,
   # ...
   watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
-      "--watch",       # watch option for Webpack 5
-      # ...
+    npm: [
+      "run",
+      "watch",
+      cd: # ...
+    ]
+  ]
 ```
 
 ### For non-umbrella projects
@@ -99,18 +99,18 @@ $ svn export \
 // ...
 ```
 
-3. Adjust `config/dev.exs` to fit Webpack 5:
+3. Adjust `config/dev.exs` to setup `watchers`:
 
 ```ex
 config :hello, HelloWeb.Endpoint,
   # ...
   watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
-      "--watch",       # watch option for Webpack 5
-      # ...
+    npm: [
+      "run",
+      "watch",
+      cd: # ...
+    ]
+  ]
 ```
 
 ## More

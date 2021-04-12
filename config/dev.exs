@@ -12,11 +12,9 @@ config :hello_web, HelloWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
-      "--watch",
+    npm: [
+      "run",
+      "watch",
       cd: Path.expand("../apps/hello_web/assets", __DIR__)
     ]
   ]
