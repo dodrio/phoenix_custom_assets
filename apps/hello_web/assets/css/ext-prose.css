@@ -1,5 +1,5 @@
 @layer components {
-  .prose-zh {
+  .prose-neat {
     @apply text-justify;
     @apply break-all;
   }
