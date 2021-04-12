@@ -31,8 +31,8 @@ $ mix phx.new demo --umbrella --live
   - `@tailwindcss/aspect-ratio`
 - Alpine.js with [necessary patch](https://github.com/c4710n/phx-webpack-example/blob/2eac11c8d18247088b80109bb46847a4138fc25d/apps/hello_web/assets/js/index.js#L16)
 - Compatible with Phoenix LiveView
+- theme-sensitive progress bar for LiveView
 - set [Inter var](https://rsms.me/inter/) as default font
-- [theme-sensitive](https://github.com/c4710n/phx-webpack-example/blob/2eac11c8d18247088b80109bb46847a4138fc25d/apps/hello_web/assets/css/custom-nprogress.css#L7) nprogress
 - Webpack 5 + modular configuration, it supports:
   - [all the good things](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) provided by Webpack 5
   - JS:

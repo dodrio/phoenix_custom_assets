@@ -9,9 +9,6 @@
 
 @import './ext-prose.css';
 
-/* apply colors.primary-500 as the color nprogress bar */
-@import './custom-nprogress.css';
-
 /* hide iframe of phoenix-live-reload */
 iframe[hidden] {
   display: none;
