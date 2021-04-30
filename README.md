@@ -1,6 +1,18 @@
-# phx-webpack-example
+# PETAL starter
 
-> An alternative `assets` dir aiming to integrate [TailwindCSS](https://tailwindcss.com/) and [Alpine.js](https://github.com/alpinejs/alpine) for Phoenix.
+> An alternative `assets` dir for PETAL stack.
+
+## What is PETAL?
+
+PETAL is a stack for building a web application with a responsive and reactive user experience.
+
+- [Phoenix](https://www.phoenixframework.org/)
+- [Elixir](https://elixir-lang.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Alpine.js](https://github.com/alpinejs/alpine)
+- [LiveView](https://hexdocs.pm/phoenix_live_view)
+
+> [Google it for more](https://www.google.com/search?q=petal+stack).
 
 ## How it works?
 
