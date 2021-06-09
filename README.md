@@ -125,9 +125,10 @@ config :hello, HelloWeb.Endpoint,
   ]
 ```
 
-## More
+## Read More
 
-- [phx_tailwind_generators](https://github.com/wintermeyer/phx_tailwind_generators)
+- [Optimizing User Experience with LiveView](https://dockyard.com/blog/2020/12/21/optimizing-user-experience-with-liveview)
+- [How to combine Phoenix LiveView with Alpine.js](https://fullstackphoenix.com/tutorials/combine-phoenix-liveview-with-alpine-js)
 
 ## License
 
