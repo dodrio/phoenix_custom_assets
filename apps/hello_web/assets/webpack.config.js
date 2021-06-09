@@ -22,14 +22,11 @@ const pcAutoprefixer = require('autoprefixer')
 const tailwindcss = require('tailwindcss')
 
 // Locations
-const srcStatic = resolveSrc('static/')
 const destRoot = resolveDest('./')
 const destJS = resolveDest('js/')
 const destCSS = resolveDest('css/')
 const destFont = resolveDest('fonts/')
 const destImage = resolveDest('images/')
-const publicFont = path.join(PUBLIC_PATH, path.relative(destRoot, destFont))
-const publicImage = path.join(PUBLIC_PATH, path.relative(destRoot, destImage))
 
 function resolveSrc(relativePath = '') {
   const root = path.resolve(__dirname)
@@ -41,6 +38,10 @@ function resolveDest(relativePath = '') {
   const root = path.resolve(__dirname, DEST_DIR)
   const absPath = path.join(root, relativePath)
   return absPath
+}
+
+function resolvePublic(destPath) {
+  return path.join(PUBLIC_PATH, path.relative(destRoot, destPath))
 }
 
 // Webpack Configurations
@@ -73,6 +74,7 @@ function loadJS(isProd) {
     output: {
       filename: '[name].js',
       path: destJS,
+      publicPath: PUBLIC_PATH,
     },
     module: {
       rules: [
@@ -140,9 +142,8 @@ function loadCSS() {
     ],
     optimization: {
       minimizer: [
-        new CssMinimizerPlugin({
-          sourceMap: true,
-        }),
+        // no need to configure sourcemap, it will be setup according to `devtool` option.
+        new CssMinimizerPlugin(),
       ],
     },
   }
@@ -160,7 +161,7 @@ function loadFont() {
               options: {
                 name: '[name].[ext]',
                 outputPath: path.relative(destJS, destFont),
-                publicPath: publicFont,
+                publicPath: resolvePublic(destFont),
               },
             },
           ],
@@ -182,7 +183,7 @@ function loadImage() {
               options: {
                 name: '[name].[ext]',
                 outputPath: path.relative(destJS, destImage),
-                publicPath: publicImage,
+                publicPath: resolvePublic(destImage),
               },
             },
           ],
@@ -196,7 +197,7 @@ function copyStatic() {
   return {
     plugins: [
       new CopyWebpackPlugin({
-        patterns: [{ from: srcStatic, to: destRoot }],
+        patterns: [{ from: resolveSrc('static/'), to: destRoot }],
       }),
     ],
   }
