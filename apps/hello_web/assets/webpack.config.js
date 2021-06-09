@@ -1,6 +1,6 @@
-// destination directory relative to current file.
-const DEST_DIR = '../priv/static'
-// public path for serving static files in destination directory.
+// output directory relative to current file.
+const OUTPUT_DIR = '../priv/static'
+// public path for serving static files in output directory.
 const PUBLIC_PATH = '/'
 
 const path = require('path')
@@ -22,11 +22,11 @@ const pcAutoprefixer = require('autoprefixer')
 const tailwindcss = require('tailwindcss')
 
 // Locations
-const destRoot = resolveDest('./')
-const destJS = resolveDest('js/')
-const destCSS = resolveDest('css/')
-const destFont = resolveDest('fonts/')
-const destImage = resolveDest('images/')
+const outputRoot = resolveOutput('./')
+const outputJS = resolveOutput('js/')
+const outputCSS = resolveOutput('css/')
+const outputFont = resolveOutput('fonts/')
+const outputImage = resolveOutput('images/')
 
 function resolveSrc(relativePath = '') {
   const root = path.resolve(__dirname)
@@ -34,14 +34,14 @@ function resolveSrc(relativePath = '') {
   return absPath
 }
 
-function resolveDest(relativePath = '') {
-  const root = path.resolve(__dirname, DEST_DIR)
+function resolveOutput(relativePath = '') {
+  const root = path.resolve(__dirname, OUTPUT_DIR)
   const absPath = path.join(root, relativePath)
   return absPath
 }
 
-function resolvePublic(destPath) {
-  return path.join(PUBLIC_PATH, path.relative(destRoot, destPath))
+function resolvePublic(outputPath) {
+  return path.join(PUBLIC_PATH, path.relative(outputRoot, outputPath))
 }
 
 // Webpack Configurations
@@ -73,7 +73,7 @@ function loadJS(isProd) {
     },
     output: {
       filename: '[name].js',
-      path: destJS,
+      path: outputJS,
       publicPath: PUBLIC_PATH,
     },
     module: {
@@ -137,7 +137,7 @@ function loadCSS() {
     },
     plugins: [
       new MiniCSSExtractPlugin({
-        filename: path.join(path.relative(destJS, destCSS), '[name].css'),
+        filename: path.join(path.relative(outputJS, outputCSS), '[name].css'),
       }),
     ],
     optimization: {
@@ -160,8 +160,8 @@ function loadFont() {
               loader: 'file-loader',
               options: {
                 name: '[name].[ext]',
-                outputPath: path.relative(destJS, destFont),
-                publicPath: resolvePublic(destFont),
+                outputPath: path.relative(outputJS, outputFont),
+                publicPath: resolvePublic(outputFont),
               },
             },
           ],
@@ -182,8 +182,8 @@ function loadImage() {
               loader: 'file-loader',
               options: {
                 name: '[name].[ext]',
-                outputPath: path.relative(destJS, destImage),
-                publicPath: resolvePublic(destImage),
+                outputPath: path.relative(outputJS, outputImage),
+                publicPath: resolvePublic(outputImage),
               },
             },
           ],
@@ -197,7 +197,7 @@ function copyStatic() {
   return {
     plugins: [
       new CopyWebpackPlugin({
-        patterns: [{ from: resolveSrc('static/'), to: destRoot }],
+        patterns: [{ from: resolveSrc('static/'), to: outputRoot }],
       }),
     ],
   }
