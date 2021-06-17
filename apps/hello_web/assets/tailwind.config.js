@@ -16,23 +16,17 @@ module.exports = {
     container: {
       center: true,
     },
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-
-      white: colors.white,
-      black: colors.black,
-
-      primary: colors.rose,
-      neutral: colors.blueGray,
-      info: colors.blue,
-      success: colors.green,
-      danger: colors.red,
-    },
     extend: {
       fontFamily: {
         sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrains MonoVariable', ...defaultTheme.fontFamily.mono],
+      },
+      colors: {
+        primary: colors.rose,
+        neutral: colors.blueGray,
+        info: colors.blue,
+        success: colors.green,
+        danger: colors.red,
       },
     },
   },
