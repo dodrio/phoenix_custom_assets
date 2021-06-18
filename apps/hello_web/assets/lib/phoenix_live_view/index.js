@@ -11,11 +11,18 @@ const csrfToken = document
 
 const liveSocket = new LiveSocket('/live', Socket, {
   params: { _csrf_token: csrfToken },
-  // https://dockyard.com/blog/2020/12/21/optimizing-user-experience-with-liveview
+  // https://github.com/livewire/livewire/blob/a4ffb135693e7982e5b982ca203f5dc7a7ae1126/js/component/SupportAlpine.js#L291
   dom: {
     onBeforeElUpdated(from, to) {
-      if (from.__x && window.Alpine) {
-        window.Alpine.clone(from.__x, to)
+      if (!window.Alpine) return
+
+      if (from.nodeType !== 1) return
+
+      // If the element we are updating is an Alpine component...
+      if (from._x_dataStack) {
+        // Then temporarily clone it (with it's data) to the "to" element.
+        // This should simulate LiveView being aware of Alpine changes.
+        window.Alpine.clone(from, to)
       }
     },
   },
