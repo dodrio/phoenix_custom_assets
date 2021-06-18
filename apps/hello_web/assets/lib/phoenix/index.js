@@ -3,10 +3,13 @@ import 'phoenix_html'
 import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
 
-import Alpine from 'alpinejs'
+import './alert.css'
+import './form.css'
+import './live_view.css'
+import './live_reload.css'
 
 import topbar from 'topbar'
-import tailwindConfig from '../tailwind.config'
+import tailwindConfig from '../../tailwind.config'
 
 const csrfToken = document
   .querySelector("meta[name='csrf-token']")
@@ -17,15 +20,15 @@ const liveSocket = new LiveSocket('/live', Socket, {
   // https://dockyard.com/blog/2020/12/21/optimizing-user-experience-with-liveview
   dom: {
     onBeforeElUpdated(from, to) {
-      if (from.__x) {
-        Alpine.clone(from.__x, to)
+      if (from.__x && window.Alpine) {
+        window.Alpine.clone(from.__x, to)
       }
     },
   },
 })
 
 // Show progress bar on live navigation and form submits
-const primaryColor = tailwindConfig.theme.colors.primary['500']
+const primaryColor = tailwindConfig.theme.extend.colors.primary['500']
 topbar.config({
   barThickness: 2,
   barColors: { 0: primaryColor },
