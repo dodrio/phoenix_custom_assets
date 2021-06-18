@@ -41,7 +41,7 @@ $ mix phx.new demo --umbrella --live
   - `@tailwindcss/forms`
   - `@tailwindcss/typography`
   - `@tailwindcss/aspect-ratio`
-- Alpine.js with [necessary patch](https://github.com/c4710n/phx-webpack-example/blob/2eac11c8d18247088b80109bb46847a4138fc25d/apps/hello_web/assets/js/index.js#L16)
+- Alpine.js with [necessary patch](https://dockyard.com/blog/2020/12/21/optimizing-user-experience-with-liveview)
 - Compatible with Phoenix LiveView
 - theme-sensitive progress bar for LiveView
 - set [Inter var](https://rsms.me/inter/) as default font
