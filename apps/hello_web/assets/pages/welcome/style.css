@@ -15,13 +15,3 @@ nav[role='navigation'] {
 .phx-hero input {
   background: #ffffff;
 }
-
-.row {
-  @apply flex justify-around;
-}
-
-.column {
-  h2 {
-    @apply font-semibold;
-  }
-}
