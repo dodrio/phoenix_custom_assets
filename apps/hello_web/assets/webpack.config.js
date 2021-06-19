@@ -13,6 +13,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 // PostCSS
 const pcImport = require('postcss-import')
@@ -46,6 +47,7 @@ module.exports = (_env, { mode }) => {
 
   const isProd = mode === 'production'
   return merge([
+    cleanup(),
     loadJS(isProd),
     loadCSS(),
     loadFont(),
@@ -182,5 +184,11 @@ function copyStatic() {
         patterns: [{ from: resolveSrc('static/'), to: outputRoot }],
       }),
     ],
+  }
+}
+
+function cleanup() {
+  return {
+    plugins: [new CleanWebpackPlugin()],
   }
 }
