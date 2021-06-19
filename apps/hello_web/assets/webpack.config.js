@@ -1,7 +1,8 @@
 // output directory relative to current file.
-const OUTPUT_DIR = '../priv/static'
+const OUTPUT_ROOT_DIR = '../priv/static/'
+const OUTPUT_BUNDLE_DIR = 'bundle'
 // public path for serving static files in output directory.
-const PUBLIC_PATH = '/'
+const PUBLIC_PATH = `/${OUTPUT_BUNDLE_DIR}/`
 
 const path = require('path')
 const glob = require('glob')
@@ -23,10 +24,7 @@ const tailwindcss = require('tailwindcss')
 
 // Locations
 const outputRoot = resolveOutput('./')
-const outputJS = resolveOutput('js/')
-const outputCSS = resolveOutput('css/')
-const outputFont = resolveOutput('fonts/')
-const outputImage = resolveOutput('images/')
+const outputBundle = resolveOutput(OUTPUT_BUNDLE_DIR)
 
 function resolveSrc(relativePath = '') {
   const root = path.resolve(__dirname)
@@ -35,13 +33,9 @@ function resolveSrc(relativePath = '') {
 }
 
 function resolveOutput(relativePath = '') {
-  const root = path.resolve(__dirname, OUTPUT_DIR)
+  const root = path.resolve(__dirname, OUTPUT_ROOT_DIR)
   const absPath = path.join(root, relativePath)
   return absPath
-}
-
-function resolvePublic(outputPath) {
-  return path.join(PUBLIC_PATH, path.relative(outputRoot, outputPath))
 }
 
 // Webpack Configurations
@@ -73,7 +67,7 @@ function loadJS(isProd) {
     },
     output: {
       filename: '[name].js',
-      path: outputJS,
+      path: outputBundle,
       publicPath: PUBLIC_PATH,
     },
     module: {
@@ -137,7 +131,7 @@ function loadCSS() {
     },
     plugins: [
       new MiniCSSExtractPlugin({
-        filename: path.join(path.relative(outputJS, outputCSS), '[name].css'),
+        filename: '[name].css',
       }),
     ],
     optimization: {
@@ -155,16 +149,10 @@ function loadFont() {
       rules: [
         {
           test: /\.(eot|woff|woff2|ttf)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[name].[ext]',
-                outputPath: path.relative(outputJS, outputFont),
-                publicPath: resolvePublic(outputFont),
-              },
-            },
-          ],
+          type: 'asset/resource',
+          generator: {
+            filename: '[name]-[hash:8][ext][query]',
+          },
         },
       ],
     },
@@ -177,16 +165,10 @@ function loadImage() {
       rules: [
         {
           test: /\.(png|jpe?g|gif|svg)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[name].[ext]',
-                outputPath: path.relative(outputJS, outputImage),
-                publicPath: resolvePublic(outputImage),
-              },
-            },
-          ],
+          type: 'asset/resource',
+          generator: {
+            filename: '[name]-[hash:8][ext][query]',
+          },
         },
       ],
     },
