@@ -18,6 +18,12 @@ const liveSocket = new LiveSocket('/live', Socket, {
 
       if (from.nodeType !== 1) return
 
+      // Alpine.js v2
+      if (from.__x) {
+        window.Alpine.clone(from.__x, to)
+      }
+
+      // Alpine.js v3
       // If the element we are updating is an Alpine component...
       if (from._x_dataStack) {
         // Then temporarily clone it (with it's data) to the "to" element.
@@ -35,8 +41,8 @@ topbar.config({
   barColors: { 0: primaryColor },
   shadowColor: 'rgba(0, 0, 0, .3)',
 })
-window.addEventListener('phx:page-loading-start', (info) => topbar.show())
-window.addEventListener('phx:page-loading-stop', (info) => topbar.hide())
+window.addEventListener('phx:page-loading-start', (_info) => topbar.show())
+window.addEventListener('phx:page-loading-stop', (_info) => topbar.hide())
 
 // connect if there are any LiveViews on the page
 liveSocket.connect()
