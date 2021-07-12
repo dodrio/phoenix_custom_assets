@@ -162,6 +162,12 @@ plug Plug.Static,
 + <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/bundle/app.js") %>"></script>
 ```
 
+## Notes
+
+### Working with Alpine.js v3
+
+- [Shadowed assigns with AlpineJS v3 and Phoenix LiveView 0.15](https://elixirforum.com/t/shadowed-assigns-with-alpinejs-v3-and-phoenix-liveview-0-15/40803)
+
 ## Read More
 
 - [Optimizing User Experience with LiveView](https://dockyard.com/blog/2020/12/21/optimizing-user-experience-with-liveview)
