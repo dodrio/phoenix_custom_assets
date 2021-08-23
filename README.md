@@ -168,6 +168,15 @@ plug Plug.Static,
 
 - [Shadowed assigns with AlpineJS v3 and Phoenix LiveView 0.15](https://elixirforum.com/t/shadowed-assigns-with-alpinejs-v3-and-phoenix-liveview-0-15/40803)
 
+### Switching to esbuild
+
+[esbuild](https://esbuild.github.io/) is fast and [it works for PETAL](https://sergiotapia.com/phoenix-160-liveview-esbuild-tailwind-jit-alpinejs-a-brief-tutorial). But, I am not going to switch to esbuild like official team, because:
+
+- ES5 support is required, but esbuild only supports ES2015 or above.
+- PostCSS isn't support by official team, and the integration isn't seamless.
+- I am interested in building things rather than testing tools.
+- ...
+
 ## Read More
 
 - [Optimizing User Experience with LiveView](https://dockyard.com/blog/2020/12/21/optimizing-user-experience-with-liveview)
