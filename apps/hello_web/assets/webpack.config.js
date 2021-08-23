@@ -1,6 +1,6 @@
 // output directory relative to current file.
 const OUTPUT_ROOT_DIR = '../priv/static/'
-const OUTPUT_BUNDLE_DIR = 'bundle'
+const OUTPUT_BUNDLE_DIR = 'assets'
 // public path for serving static files in output directory.
 const PUBLIC_PATH = `/${OUTPUT_BUNDLE_DIR}/`
 

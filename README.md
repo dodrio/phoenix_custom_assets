@@ -93,7 +93,7 @@ config :hello, HelloWeb.Endpoint,
 plug Plug.Static,
   # ...
 - only: ~w(css fonts images js favicon.ico robots.txt)
-+ only: ~w(bundle favicon.ico robots.txt)
++ only: ~w(assets favicon.ico robots.txt)
 ```
 
 4. Modify layout file:
@@ -101,8 +101,8 @@ plug Plug.Static,
 ```diff
 - <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
 - <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script
-+ <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/bundle/app.css") %>"/>
-+ <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/bundle/app.js") %>"></script>
++ <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/assets/app.css") %>"/>
++ <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/assets/app.js") %>"></script>
 >
 ```
 
@@ -150,7 +150,7 @@ config :hello, HelloWeb.Endpoint,
 plug Plug.Static,
   # ...
 - only: ~w(css fonts images js favicon.ico robots.txt)
-+ only: ~w(bundle favicon.ico robots.txt)
++ only: ~w(assets favicon.ico robots.txt)
 ```
 
 5. Modify layout file:
@@ -158,8 +158,8 @@ plug Plug.Static,
 ```diff
 - <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
 - <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script
-+ <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/bundle/app.css") %>"/>
-+ <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/bundle/app.js") %>"></script>
++ <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/assets/app.css") %>"/>
++ <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/assets/app.js") %>"></script>
 ```
 
 ## Notes

@@ -24,7 +24,7 @@ defmodule HelloWeb.Endpoint do
     at: "/",
     from: :hello_web,
     gzip: false,
-    only: ~w(bundle favicon.ico robots.txt)
+    only: ~w(assets favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
