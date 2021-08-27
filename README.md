@@ -174,7 +174,6 @@ plug Plug.Static,
 
 - ES5 support is required, but esbuild only supports ES2015 or above.
 - PostCSS isn't support by official team, and the integration isn't seamless.
-- I am interested in building things rather than testing tools.
 - ...
 
 ## Read More
