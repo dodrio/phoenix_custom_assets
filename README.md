@@ -9,7 +9,7 @@
 ```sh
 $ rm -rf <app>_web/assets
 $ svn export \
-  https://github.com/c4710n/phx-webpack-example/trunk/apps/hello_web/assets \
+  https://github.com/c4710n/PETAL-starter/branches/phx-1.5/apps/hello_web/assets \
   apps/<app>_web/assets
 ```
 
@@ -55,7 +55,7 @@ plug Plug.Static,
 ```sh
 $ rm -rf assets
 $ svn export \
-  https://github.com/c4710n/phx-webpack-example/trunk/apps/hello_web/assets \
+  https://github.com/c4710n/PETAL-starter/branches/phx-1.5/apps/hello_web/assets \
   assets
 ```
 
