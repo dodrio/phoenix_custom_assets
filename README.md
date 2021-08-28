@@ -16,7 +16,7 @@ $ mix phx.new demo --umbrella --live
 
 ## Usage
 
-1. Replace your `apps/<app>_web/assets` with `apps/hello_web/assets`:
+### 1. Replace your `apps/<app>_web/assets` with `apps/hello_web/assets`
 
 ```sh
 $ rm -rf apps/<app>_web/assets
@@ -27,7 +27,7 @@ $ svn export \
 
 > SVN provides `export` function which is useful for copying a sub-directory from a repo.
 
-2. Adjust `config/dev.exs` to setup `watchers`:
+### 2. Adjust `config/dev.exs` to setup `watchers`
 
 ```elixir
 config :hello, HelloWeb.Endpoint,
@@ -41,7 +41,7 @@ config :hello, HelloWeb.Endpoint,
   ]
 ```
 
-4. Remove esbuild related things:
+### 3. Remove esbuild related things
 
 Remove `:esbuild` in `apps/<app>_web/mix.exs`:
 
@@ -81,7 +81,7 @@ Remove related config in `config/config.exs`:
 -   ]
 ```
 
-5. Final
+### 4. Final
 
 Clean `mix.lock`:
 
