@@ -1,0 +1,4 @@
+/* hide pre-initialized DOM of alpine.js */
+[x-cloak] {
+  display: none !important;
+}
