@@ -23,7 +23,6 @@
     "autoprefixer": "^10.0.4",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
-    "copy-webpack-plugin": "^6.3.2",
     "core-js": "^3.8.0",
     "css-loader": "^5.0.1",
     "css-minimizer-webpack-plugin": "^3.0.1",

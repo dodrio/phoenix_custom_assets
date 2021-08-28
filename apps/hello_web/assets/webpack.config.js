@@ -9,7 +9,6 @@ const glob = require('glob')
 
 // Webpack
 const { merge } = require('webpack-merge')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
@@ -24,7 +23,6 @@ const pcAutoprefixer = require('autoprefixer')
 const tailwindcss = require('tailwindcss')
 
 // Locations
-const outputRoot = resolveOutput('./')
 const outputBundle = resolveOutput(OUTPUT_BUNDLE_DIR)
 
 function resolveSrc(relativePath = '') {
@@ -46,14 +44,7 @@ module.exports = (_env, { mode }) => {
   process.env.NODE_ENV = mode
 
   const isProd = mode === 'production'
-  return merge([
-    cleanup(),
-    loadJS(isProd),
-    loadCSS(),
-    loadFont(),
-    loadImage(),
-    copyStatic(),
-  ])
+  return merge([cleanup(), loadJS(isProd), loadCSS(), loadFont(), loadImage()])
 }
 
 function loadJS(isProd) {
@@ -174,16 +165,6 @@ function loadImage() {
         },
       ],
     },
-  }
-}
-
-function copyStatic() {
-  return {
-    plugins: [
-      new CopyWebpackPlugin({
-        patterns: [{ from: resolveSrc('static/'), to: outputRoot }],
-      }),
-    ],
   }
 }
 
