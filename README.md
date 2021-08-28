@@ -80,3 +80,11 @@ Remove related config in `config/config.exs`:
 -     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
 -   ]
 ```
+
+5. Final
+
+Clean `mix.lock`:
+
+```sh
+$ mix deps.clean --unused --unlock
+```
