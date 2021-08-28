@@ -78,8 +78,14 @@ function loadJS(isProd) {
     optimization: {
       minimizer: [
         new TerserPlugin({
-          terserOptions: { sourceMap: true },
           parallel: true,
+          extractComments: false,
+          terserOptions: {
+            sourceMap: true,
+            format: {
+              comments: false,
+            },
+          },
         }),
       ],
     },
