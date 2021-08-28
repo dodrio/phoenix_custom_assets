@@ -5,6 +5,7 @@ module.exports = {
   mode: 'jit',
   purge: {
     content: [
+      '../lib/**/*.html.heex',
       '../lib/**/*.html.eex',
       '../lib/**/*.html.leex',
       '../lib/**/*.ex',
