@@ -129,8 +129,18 @@ function loadCSS() {
     ],
     optimization: {
       minimizer: [
-        // no need to configure sourcemap, it will be setup according to `devtool` option.
-        new CssMinimizerPlugin(),
+        // + no need to configure sourcemap, it will be setup according to `devtool` option.
+        // + all comments in CSS will be removed.
+        new CssMinimizerPlugin({
+          minimizerOptions: {
+            preset: [
+              'default',
+              {
+                discardComments: { removeAll: true },
+              },
+            ],
+          },
+        }),
       ],
     },
   }
