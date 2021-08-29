@@ -1,3 +1,5 @@
+/* Phoenix Socket and LiveView configuration. */
+
 import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
 import './style.css'
@@ -24,10 +26,7 @@ const liveSocket = new LiveSocket('/live', Socket, {
       }
 
       // Alpine.js v3
-      // If the element we are updating is an Alpine component...
       if (from._x_dataStack) {
-        // Then temporarily clone it (with it's data) to the "to" element.
-        // This should simulate LiveView being aware of Alpine changes.
         window.Alpine.clone(from, to)
       }
     },
