@@ -1,3 +1,5 @@
+import './global/polyfill'
+
 import '@fontsource/inter/variable.css'
 import '@fontsource/jetbrains-mono/variable.css'
 

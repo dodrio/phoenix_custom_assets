@@ -13,6 +13,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { checkModules, buildExcludeRegexp } = require('are-you-es5')
 
 // PostCSS
 const pcImport = require('postcss-import')
@@ -48,6 +49,17 @@ module.exports = (_env, { mode }) => {
 }
 
 function loadJS(isProd) {
+  const depsAnalysis = checkModules({
+    path: '', // Automatically find up package.json from cwd
+    checkAllNodeModules: true,
+    ignoreBabelAndWebpackPackages: true,
+  })
+
+  // Build a regexp for Webpack exclude option.
+  // This regexp represents all modules in node_modules/ excluding es6 modules.
+  // With `exclude` option provided by Webpack, all es6 modules will be transpiled.
+  const regexpExcludingES6Modules = buildExcludeRegexp(depsAnalysis.es6Modules)
+
   return {
     resolve: {
       extensions: ['.js'],
@@ -67,7 +79,7 @@ function loadJS(isProd) {
       rules: [
         {
           test: /\.js$/,
-          exclude: /node_modules/,
+          exclude: regexpExcludingES6Modules,
           use: {
             loader: 'babel-loader',
           },
