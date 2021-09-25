@@ -27,7 +27,6 @@ config :hello_web,
 # Configures the endpoint
 config :hello_web, HelloWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "UXm9GFitdX2husNdbeP9vPwjIKdSUCg8qCwYaQ//e7YtLLKO54CooFulwGB+KREr",
   render_errors: [view: HelloWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Hello.PubSub,
   live_view: [signing_salt: "jrVW/ZjD"]
