@@ -58,7 +58,7 @@ function loadJS(isProd) {
   // Build a regexp for Webpack exclude option.
   // This regexp represents all modules in node_modules/ excluding es6 modules.
   // With `exclude` option provided by Webpack, all es6 modules will be transpiled.
-  const regexpExcludingES6Modules = buildExcludeRegexp(depsAnalysis.es6Modules)
+  const es5Modules = buildExcludeRegexp(depsAnalysis.es6Modules)
 
   return {
     resolve: {
@@ -79,7 +79,7 @@ function loadJS(isProd) {
       rules: [
         {
           test: /\.js$/,
-          exclude: regexpExcludingES6Modules,
+          exclude: es5Modules,
           use: {
             loader: 'babel-loader',
           },
