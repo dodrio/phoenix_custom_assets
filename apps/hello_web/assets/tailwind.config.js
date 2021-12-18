@@ -2,16 +2,11 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: {
-    content: [
-      '../lib/**/*.html.heex',
-      '../lib/**/*.html.eex',
-      '../lib/**/*.html.leex',
-      '../lib/**/*.ex',
-      '../lib/**/*.exs',
-      './js/**/*.js',
-    ],
-  },
+  content: [
+    '../lib/**/*.html.{heex,leex,eex}',
+    '../lib/**/*.{ex,exs}',
+    './js/**/*.js',
+  ],
   theme: {
     extend: {
       fontFamily: {
