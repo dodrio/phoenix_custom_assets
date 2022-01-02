@@ -18,11 +18,11 @@ const { checkModules, buildExcludeRegexp } = require('are-you-es5')
 
 // PostCSS
 const pcImport = require('postcss-import')
-const pcNested = require('postcss-nested')
 const pcAutoprefixer = require('autoprefixer')
 
 // TailwindCSS
 const tailwindcss = require('tailwindcss')
+const tailwindcssNesting = require('tailwindcss/nesting')
 
 // Locations
 const staticRoot = resolveOutput('./')
@@ -114,7 +114,7 @@ function loadJS(isProd) {
 }
 
 function loadCSS() {
-  const pcPlugins = [pcImport, tailwindcss, pcNested, pcAutoprefixer]
+  const pcPlugins = [pcImport, tailwindcssNesting, tailwindcss, pcAutoprefixer]
 
   return {
     resolve: {
