@@ -56,7 +56,8 @@ Modify `aliases` in `app/<app>_web/mix.exs`:
     [
 -     setup: ["deps.get"],
 -     "assets.deploy": ["esbuild default --minify", "phx.digest"]
-+     setup: ["deps.get", "cmd npm install --prefix assets"],
++     setup: ["deps.get", "assets.deps.get"],
++     "assets.deps.get": "cmd npm install --prefix assets",
 +     "assets.deploy": ["cmd npm run deploy --prefix assets", "phx.digest"]
     ]
   end
