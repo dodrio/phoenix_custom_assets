@@ -57,8 +57,7 @@ defmodule HelloWeb.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "assets.deps.get"],
-      "assets.deps.get": "cmd npm install --prefix assets",
+      setup: ["deps.get", "cmd npm install --prefix assets"],
       "assets.deploy": ["cmd npm run deploy --prefix assets", "phx.digest"]
     ]
   end
