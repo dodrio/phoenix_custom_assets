@@ -1,8 +1,5 @@
 // output directory relative to current file.
 const OUTPUT_ROOT_DIR = '../priv/static/'
-const OUTPUT_BUNDLE_DIR = 'assets'
-// public path for serving static files in output directory.
-const PUBLIC_PATH = `/${OUTPUT_BUNDLE_DIR}/`
 
 const path = require('path')
 const glob = require('glob')
@@ -26,7 +23,7 @@ const tailwindcssNesting = require('tailwindcss/nesting')
 
 // Locations
 const staticRoot = resolveOutput('./')
-const outputBundle = resolveOutput(OUTPUT_BUNDLE_DIR)
+const outputBundle = resolveOutput('./assets')
 
 function resolveSrc(relativePath = '') {
   const root = path.resolve(__dirname)
@@ -82,7 +79,7 @@ function loadJS(isProd) {
     output: {
       filename: '[name].js',
       path: outputBundle,
-      publicPath: PUBLIC_PATH,
+      publicPath: 'auto',
     },
     module: {
       rules: [
