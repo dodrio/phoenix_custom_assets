@@ -33,15 +33,28 @@ const liveSocket = new LiveSocket('/live', Socket, {
   },
 })
 
-// Show progress bar on live navigation and form submits
+// Show progress bar on live navigation and form submits if the results do not
+// appear within 200ms.
 const primaryColor = tailwindConfig.theme.colors.primary['500']
 topbar.config({
   barThickness: 2,
   barColors: { 0: primaryColor },
   shadowColor: 'rgba(0, 0, 0, .3)',
 })
-window.addEventListener('phx:page-loading-start', (_info) => topbar.show())
-window.addEventListener('phx:page-loading-stop', (_info) => topbar.hide())
+
+let topBarScheduled = undefined
+
+window.addEventListener('phx:page-loading-start', (_info) => {
+  if (!topBarScheduled) {
+    topBarScheduled = setTimeout(() => topbar.show(), 200)
+  }
+})
+
+window.addEventListener('phx:page-loading-stop', (_info) => {
+  clearTimeout(topBarScheduled)
+  topBarScheduled = undefined
+  topbar.hide()
+})
 
 // connect if there are any LiveViews on the page
 liveSocket.connect()
