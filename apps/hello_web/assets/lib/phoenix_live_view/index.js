@@ -7,26 +7,15 @@ import './style.css'
 import topbar from 'topbar'
 import tailwindConfig from '../tailwind/config'
 
-const csrfToken = document
-  .querySelector("meta[name='csrf-token']")
-  .getAttribute('content')
+const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
 
 const liveSocket = new LiveSocket('/live', Socket, {
   params: { _csrf_token: csrfToken },
   // https://github.com/livewire/livewire/blob/a4ffb135693e7982e5b982ca203f5dc7a7ae1126/js/component/SupportAlpine.js#L291
   dom: {
     onBeforeElUpdated(from, to) {
-      if (!window.Alpine) return
-
-      if (from.nodeType !== 1) return
-
-      // Alpine.js v2
-      if (from.__x) {
-        window.Alpine.clone(from.__x, to)
-      }
-
       // Alpine.js v3
-      if (from._x_dataStack) {
+      if (window.Alpine && from._x_dataStack) {
         window.Alpine.clone(from, to)
       }
     },
