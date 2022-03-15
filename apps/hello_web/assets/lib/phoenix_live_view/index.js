@@ -11,6 +11,7 @@ const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute
 
 const liveSocket = new LiveSocket('/live', Socket, {
   params: { _csrf_token: csrfToken },
+  // https://hexdocs.pm/phoenix_live_view/js-interop.html#client-hooks-via-phx-hook
   // https://github.com/livewire/livewire/blob/a4ffb135693e7982e5b982ca203f5dc7a7ae1126/js/component/SupportAlpine.js#L291
   dom: {
     onBeforeElUpdated(from, to) {
