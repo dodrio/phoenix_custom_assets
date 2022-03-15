@@ -104,7 +104,10 @@ function loadJS(isProd) {
             loader: 'babel-loader',
             options: {
               plugins: [
-                ['@babel/plugin-transform-runtime', { corejs: false, absoluteRuntime: true }],
+                [
+                  '@babel/plugin-transform-runtime',
+                  { absoluteRuntime: true, corejs: false, regenerator: false },
+                ],
               ],
             },
           },
