@@ -81,6 +81,17 @@ Remove related config in `config/config.exs`:
 -   ]
 ```
 
+Adjust `.gitignore`:
+
+```diff
+ # Ignore assets that are produced by build tools.
+-/priv/static/assets/
+-
+-# Ignore digested assets cache.
+-/priv/static/cache_manifest.json
++/priv/static/
+```
+
 ### 4. Final
 
 Clean `mix.lock`:
