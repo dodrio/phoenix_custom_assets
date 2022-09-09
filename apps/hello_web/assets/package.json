@@ -4,6 +4,9 @@
     "deploy": "webpack --mode production",
     "watch": "webpack --mode development --watch --watch-options-stdin"
   },
+  "engines": {
+    "node": ">= 14.15.0"
+  },
   "dependencies": {
     "@fontsource/inter": "^4.5.12",
     "@fontsource/jetbrains-mono": "^4.5.10",
