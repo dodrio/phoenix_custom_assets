@@ -4,8 +4,7 @@ import Config
 # debugging and code reloading.
 #
 # The watchers configuration can be used to run external
-# watchers to your application. For example, we use it
-# with esbuild to bundle .js and .css sources.
+# watchers to your application.
 config :hello_web, HelloWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
@@ -15,8 +14,11 @@ config :hello_web, HelloWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "nkslu6lBQSww4U6SUY3KC9QLIQwpnBFumVUVUnyY/RePzKDg1DxGwbAWax/tBIgD",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
+    npm: [
+      "run",
+      "watch",
+      cd: Path.expand("../apps/hello_web/assets", __DIR__)
+    ]
   ]
 
 # ## SSL Support
