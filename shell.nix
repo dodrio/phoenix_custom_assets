@@ -1,11 +1,11 @@
-{ pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/856672f2ce37f47b69c31c448fb6e30f39761e66.tar.gz") { } }:
+{ pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/7d4c10b963dc6823c490aa01ef677454637e3ea3.tar.gz") { } }:
 
 with pkgs;
 
 mkShell {
   buildInputs = [
-    beam.packages.erlangR24.elixir_1_13
-    nodejs-16_x
+    beam.packages.erlangR25.elixir_1_14
+    nodejs-18_x
   ]
   ++ lib.optionals stdenv.isLinux [
     # For ExUnit Notifier on Linux
