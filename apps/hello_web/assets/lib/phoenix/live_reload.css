@@ -1,4 +1,0 @@
-/* hide iframe of phoenix-live-reload */
-iframe[hidden] {
-  display: none;
-}
