@@ -2,7 +2,6 @@
 
 import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
-import './style.css'
 
 import topbar from 'topbar'
 import tailwindConfig from '../tailwind/config'
