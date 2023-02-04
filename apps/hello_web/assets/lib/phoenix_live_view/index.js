@@ -4,8 +4,7 @@ import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
 
 import topbar from 'topbar'
-// TODO:
-// import tailwindConfig from '../tailwind/config'
+import tailwindConfig from '../tailwind/config'
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
 
@@ -25,7 +24,7 @@ const liveSocket = new LiveSocket('/live', Socket, {
 
 // Show progress bar on live navigation and form submits if the results do not
 // appear within 200ms.
-const primaryColor = '#333333' // tailwindConfig.theme.colors.primary['500']
+const primaryColor = tailwindConfig.theme.colors.primary['500']
 topbar.config({
   barThickness: 2,
   barColors: { 0: primaryColor },
