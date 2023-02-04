@@ -31,19 +31,8 @@ topbar.config({
   shadowColor: 'rgba(0, 0, 0, .3)',
 })
 
-let topBarScheduled = undefined
-
-window.addEventListener('phx:page-loading-start', (_info) => {
-  if (!topBarScheduled) {
-    topBarScheduled = setTimeout(() => topbar.show(), 200)
-  }
-})
-
-window.addEventListener('phx:page-loading-stop', (_info) => {
-  clearTimeout(topBarScheduled)
-  topBarScheduled = undefined
-  topbar.hide()
-})
+window.addEventListener('phx:page-loading-start', (info) => topbar.show(200))
+window.addEventListener('phx:page-loading-stop', (info) => topbar.hide())
 
 // connect if there are any LiveViews on the page
 liveSocket.connect()
