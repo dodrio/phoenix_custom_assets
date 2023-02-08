@@ -7,11 +7,10 @@
     <.live_title suffix=" · Phoenix Framework">
       <%= assigns[:page_title] || "Hello" %>
     </.live_title>
-    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
-    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
-    </script>
+    <.modern_assets_head />
   </head>
   <body class="bg-white antialiased">
     <%= @inner_content %>
+    <.modern_assets_body />
   </body>
 </html>

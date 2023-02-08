@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import legacy from '@vitejs/plugin-legacy'
+import mergeOptions from 'merge-options'
 
 import pcImport from 'postcss-import'
 import pcAutoprefixer from 'autoprefixer'
@@ -27,13 +28,39 @@ export default defineConfig(({ command, mode }) => {
     process.stdin.resume()
   }
 
-  return {
-    plugins: [
-      legacy({
-        targets: ['defaults', '> 0.25%', 'not dead', 'not IE 11'],
-      }),
-    ],
+  const buildTargetOptions = isProduction
+    ? {
+        plugins: [
+          legacy({
+            targets: ['defaults', '> 0.25%', 'not dead', 'not IE 11'],
+          }),
+        ],
 
+        build: {
+          target: undefined,
+        },
+      }
+    : {
+        build: {
+          target: 'es2015',
+        },
+      }
+
+  const minifyOptions = isProduction
+    ? {
+        build: {
+          sourcemap: false,
+          minify: true,
+        },
+      }
+    : {
+        build: {
+          sourcemap: true,
+          minify: false,
+        },
+      }
+
+  const defaultOptions = {
     appType: 'custom',
     publicDir: 'static',
     resolve: {
@@ -49,7 +76,7 @@ export default defineConfig(({ command, mode }) => {
 
     build: {
       outDir: '../priv/static',
-      emptyOutDir: true,
+      emptyOutDir: false,
       assetsDir: 'assets',
 
       // Polfyill module preloading
@@ -58,12 +85,6 @@ export default defineConfig(({ command, mode }) => {
       // Don't generate a manifest file
       // Phoenix has its own mechanism for generating cache manifest files.
       manifest: false,
-
-      // Enable sourcemap for development only
-      sourcemap: isDevelopment,
-
-      // Enable minification for production only
-      minify: isProduction,
 
       // Disable inline assets
       assetsInlineLimit: 0,
@@ -84,4 +105,6 @@ export default defineConfig(({ command, mode }) => {
       },
     },
   }
+
+  return mergeOptions(defaultOptions, buildTargetOptions, minifyOptions)
 })

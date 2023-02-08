@@ -88,6 +88,9 @@ defmodule HelloWeb do
       import HelloWeb.CoreComponents
       import HelloWeb.Gettext
 
+      # ModernAssets components
+      import HelloWeb.ModernAssets
+
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 
