@@ -18,25 +18,21 @@ const {
 const outDir = '../priv/static'
 const assetsDir = 'assets'
 
-export default defineConfig(({ command, mode }) => {
-  if (!['build'].includes(command)) {
-    throw 'only following command are supported: build'
-  }
+// watch STDIN and terminate Vite when Phoenix quits
+function watchStdin() {
+  process.stdin.on('close', () => {
+    process.exit(0)
+  })
 
-  if (!['production', 'development'].includes(mode)) {
-    throw 'only following mode are supported: production, development'
-  }
+  process.stdin.resume()
+}
 
+export default defineConfig(({ mode: mode }) => {
   const isProduction = mode === 'production'
   const isDevelopment = mode === 'development'
 
   if (isDevelopment) {
-    // terminate the watcher of Vite when Phoenix quits
-    process.stdin.on('close', () => {
-      process.exit(0)
-    })
-
-    process.stdin.resume()
+    watchStdin()
   }
 
   const copyPublicOptions = {
