@@ -14,6 +14,9 @@ const {
   theme: { colors: tailwindColors },
 } = resolveConfig(tailwindConfig)
 
+const outDir = '../priv/static'
+const assetsDir = 'assets'
+
 export default defineConfig(({ command, mode }) => {
   if (!['build'].includes(command)) {
     throw 'only following command are supported: build'
@@ -33,6 +36,13 @@ export default defineConfig(({ command, mode }) => {
     })
 
     process.stdin.resume()
+  }
+
+  const copyPublicOptions = {
+    publicDir: 'public',
+    build: {
+      copyPublicDir: true,
+    },
   }
 
   const buildTargetOptions = isProduction
@@ -69,10 +79,11 @@ export default defineConfig(({ command, mode }) => {
 
   const defaultOptions = {
     appType: 'custom',
-    publicDir: 'static',
     resolve: {
       extensions: ['.js', '.css'],
     },
+
+    // prevent clearing the terminal screen when logging certain messages
     clearScreen: false,
 
     css: {
@@ -82,9 +93,8 @@ export default defineConfig(({ command, mode }) => {
     },
 
     build: {
-      outDir: '../priv/static',
+      outDir: outDir,
       emptyOutDir: false,
-      assetsDir: 'assets',
 
       // Polfyill module preloading
       modulePreload: { polyfill: true },
@@ -93,11 +103,11 @@ export default defineConfig(({ command, mode }) => {
       // Phoenix has its own mechanism for generating cache manifest files.
       manifest: false,
 
+      // Specify the directory to nest generated assets under build.outDir.
+      assetsDir: assetsDir,
+
       // Disable inline assets
       assetsInlineLimit: 0,
-
-      // Enable copying public directory
-      copyPublicDir: true,
 
       rollupOptions: {
         input: {
@@ -105,13 +115,13 @@ export default defineConfig(({ command, mode }) => {
         },
         output: {
           intro: `window.TAILWIND_COLORS = ${JSON.stringify(tailwindColors)}`,
-          entryFileNames: 'assets/[name].js',
-          chunkFileNames: 'assets/[name].js',
-          assetFileNames: 'assets/[name][extname]',
+          entryFileNames: `${assetsDir}/[name].js`,
+          chunkFileNames: `${assetsDir}/[name].js`,
+          assetFileNames: `${assetsDir}/[name][extname]`,
         },
       },
     },
   }
 
-  return mergeOptions(defaultOptions, buildTargetOptions, minifyOptions)
+  return mergeOptions(defaultOptions, copyPublicOptions, buildTargetOptions, minifyOptions)
 })
