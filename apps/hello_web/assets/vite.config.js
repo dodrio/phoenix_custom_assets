@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import legacy from '@vitejs/plugin-legacy'
+
 import mergeOptions from 'merge-options'
 
 import resolveConfig from 'tailwindcss/resolveConfig'
