@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import legacy from '@vitejs/plugin-legacy'
 
 import pcImport from 'postcss-import'
 import pcAutoprefixer from 'autoprefixer'
@@ -27,6 +28,12 @@ export default defineConfig(({ command, mode }) => {
   }
 
   return {
+    plugins: [
+      legacy({
+        targets: ['defaults', '> 0.25%', 'not dead', 'not IE 11'],
+      }),
+    ],
+
     appType: 'custom',
     publicDir: 'static',
     resolve: {
@@ -44,9 +51,6 @@ export default defineConfig(({ command, mode }) => {
       outDir: '../priv/static',
       emptyOutDir: true,
       assetsDir: 'assets',
-
-      // Target
-      target: 'es2015',
 
       // Polfyill module preloading
       modulePreload: { polyfill: true },
