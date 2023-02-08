@@ -2,10 +2,17 @@ import { defineConfig } from 'vite'
 import legacy from '@vitejs/plugin-legacy'
 import mergeOptions from 'merge-options'
 
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from './tailwind.config.cjs'
+
 import pcImport from 'postcss-import'
 import pcAutoprefixer from 'autoprefixer'
 import pcTailwindcss from 'tailwindcss'
 import pcTailwindcssNesting from 'tailwindcss/nesting'
+
+const {
+  theme: { colors: tailwindColors },
+} = resolveConfig(tailwindConfig)
 
 export default defineConfig(({ command, mode }) => {
   if (!['build'].includes(command)) {
@@ -97,7 +104,7 @@ export default defineConfig(({ command, mode }) => {
           app: 'app.html',
         },
         output: {
-          // remove hash
+          intro: `window.TAILWIND_COLORS = ${JSON.stringify(tailwindColors)}`,
           entryFileNames: 'assets/[name].js',
           chunkFileNames: 'assets/[name].js',
           assetFileNames: 'assets/[name][extname]',
