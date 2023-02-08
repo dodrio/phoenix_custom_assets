@@ -69,21 +69,13 @@ export default defineConfig(({ command, mode }) => {
 
       rollupOptions: {
         input: {
-          app: 'index.js',
+          app: 'app.js',
         },
         output: {
           // remove hash
           entryFileNames: 'assets/[name].js',
           chunkFileNames: 'assets/[name].js',
-          assetFileNames: (assetInfo) => {
-            // rename index.css to app.css
-            if (assetInfo.name == 'index.css') {
-              return 'assets/app.css'
-            } else {
-              return 'assets/[name]-[hash][extname]'
-            }
-          },
-          //
+          assetFileNames: 'assets/[name][extname]',
         },
       },
     },
