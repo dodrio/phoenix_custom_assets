@@ -69,7 +69,7 @@ export default defineConfig(({ command, mode }) => {
 
       rollupOptions: {
         input: {
-          app: 'app.js',
+          app: 'app.html',
         },
         output: {
           // remove hash
