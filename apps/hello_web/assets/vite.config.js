@@ -93,14 +93,11 @@ export default defineConfig(({ mode: mode }) => {
       outDir: outDir,
       emptyOutDir: false,
 
-      // Polfyill module preloading
-      modulePreload: { polyfill: true },
-
-      // Don't generate a manifest file
-      // Phoenix has its own mechanism for generating cache manifest files.
+      // Don't generate a manifest file, Phoenix has its own mechanism for generating cache manifest
+      // files
       manifest: false,
 
-      // Specify the directory to nest generated assets under build.outDir.
+      // Specify the directory to nest generated assets under build.outDir
       assetsDir: assetsDir,
 
       // Disable inline assets
