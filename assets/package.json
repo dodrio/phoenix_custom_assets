@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "scripts": {
+    "deploy": "vite build --mode production",
+    "watch": "vite build --mode development --watch"
+  },
+  "engines": {
+    "node": ">= 14.15.0"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^4.5.15",
+    "@fontsource/jetbrains-mono": "^4.5.12",
+    "phoenix": "file:../deps/phoenix",
+    "phoenix_html": "file:../deps/phoenix_html",
+    "phoenix_live_view": "file:../deps/phoenix_live_view",
+    "topbar": "^2.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.9",
+    "@vitejs/plugin-legacy": "^4.0.1",
+    "autoprefixer": "^10.4.13",
+    "merge-options": "^3.0.4",
+    "postcss": "^8.4.21",
+    "postcss-import": "^15.1.0",
+    "tailwindcss": "^3.2.4",
+    "vite": "^4.1.1"
+  }
+}

@@ -1,0 +1,6 @@
+@layer components {
+  .prose-neat {
+    @apply text-justify;
+    @apply break-all;
+  }
+}
