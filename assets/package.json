@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "deploy": "vite build --mode production",
+    "build": "vite build --mode production",
     "watch": "vite build --mode development --watch"
   },
   "engines": {
