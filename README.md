@@ -39,21 +39,7 @@ $ svn export \
   assets
 ```
 
-### 2. adjust config of watchers in `config/dev.exs`
-
-```elixir
-config :hello, HelloWeb.Endpoint,
-  # ...
-  watchers: [
-    npm: [
-      "run",
-      "watch",
-      cd: Path.expand("../assets", __DIR__)
-    ]
-  ]
-```
-
-### 3. remove original esbuild and tailwind related code
+### 2. remove original esbuild and tailwind related code
 
 Remove `:esbuild` in `mix.exs`:
 
@@ -111,7 +97,21 @@ Remove related comments in `config/dev.exs`:
 - For example, we use it with esbuild to bundle .js and .css sources.
 ```
 
-Adjust `.gitignore`:
+Adjust config of watchers in `config/dev.exs`
+
+```elixir
+config :hello, HelloWeb.Endpoint,
+  # ...
+  watchers: [
+    npm: [
+      "run",
+      "watch",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
+```
+
+### 3. Adjust `.gitignore`
 
 ```diff
  # Ignore assets that are produced by build tools.
