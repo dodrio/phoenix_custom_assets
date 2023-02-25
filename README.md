@@ -1,12 +1,6 @@
 # phoenix_custom_assets
 
-> Provides an alternative `assets` dir of [Phoenix](https://www.phoenixframework.org/) for using [LiveView](https://hexdocs.pm/phoenix_live_view) and [TailwindCSS](https://tailwindcss.com/).
-
-## How it works?
-
-It works by generating code into the your application instead of acting as a library. The users have complete freedom to modify the code so it works best with their app.
-
-This idea comes from `mix phx.gen.auth`.
+> Provides an alternative `assets/` of [Phoenix](https://www.phoenixframework.org/) for using [LiveView](https://hexdocs.pm/phoenix_live_view) and [TailwindCSS](https://tailwindcss.com/).
 
 ## Features
 
@@ -16,16 +10,23 @@ This idea comes from `mix phx.gen.auth`.
   - theme-sensitive progress bar
 - TailwindCSS:
   - preinstalled plugins:
-    - `@tailwindcss/forms`
     - `@tailwindcss/typography`
+    - `@tailwindcss/forms`
     - `@tailwindcss/aspect-ratio`
+    - `@tailwindcss/line-clamp`
   - set [Inter var](https://rsms.me/inter/) as default font
 
-## Current support version of Phoenix
+## Supported versions of Phoenix
 
-- 1.7
+- `1.7`
 
-## Getting start
+## How it works?
+
+It works by generating code into the your application instead of acting as a library. The users have complete freedom to modify the code so it works best with their app.
+
+This idea comes from `mix phx.gen.auth`.
+
+## Getting Start
 
 ### 1. replace `assets/`
 
@@ -120,7 +121,7 @@ Adjust `.gitignore`:
 
 ### 4. Last
 
-Clean mix.lock:
+Clean `mix.lock`:
 
 ```
 $ mix deps.clean --unused --unlock
