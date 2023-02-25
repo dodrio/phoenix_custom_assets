@@ -35,7 +35,7 @@ It works by generating code into the your application instead of acting as a lib
 ```
 $ rm -rf assets
 $ svn export \
-  https://github.com/c4710n/phoenix_custom_assets/branches/modern_assets/apps/hello_web/assets \
+  https://github.com/c4710n/phoenix_custom_assets/branches/main/assets \
   assets
 ```
 
