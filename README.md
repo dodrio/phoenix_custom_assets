@@ -20,11 +20,13 @@
 
 - `1.7`
 
+> Umbrella projects are not supported for now.
+
 ## How it works?
 
 It works by generating code into the your application instead of acting as a library. The users have complete freedom to modify the code so it works best with their app.
 
-This idea comes from `mix phx.gen.auth`.
+> This idea comes from `mix phx.gen.auth`.
 
 ## Getting Start
 
