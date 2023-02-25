@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import legacy from '@vitejs/plugin-legacy'
 
 import mergeOptions from 'merge-options'
 
@@ -42,23 +41,11 @@ export default defineConfig(({ mode: mode }) => {
     },
   }
 
-  const buildTargetOptions = isProduction
-    ? {
-        plugins: [
-          legacy({
-            targets: ['defaults', '> 0.25%', 'not dead', 'not IE 11'],
-          }),
-        ],
-
-        build: {
-          target: undefined,
-        },
-      }
-    : {
-        build: {
-          target: 'es2015',
-        },
-      }
+  const buildTargetOptions = {
+    build: {
+      target: 'es2015',
+    },
+  }
 
   const minifyOptions = isProduction
     ? {
@@ -105,7 +92,7 @@ export default defineConfig(({ mode: mode }) => {
 
       rollupOptions: {
         input: {
-          app: 'app.html',
+          app: 'app.js',
         },
         output: {
           intro: `window.TAILWIND_COLORS = ${JSON.stringify(tailwindColors)}`,
