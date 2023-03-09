@@ -16,9 +16,9 @@
     - `@tailwindcss/line-clamp`
   - set [Inter var](https://rsms.me/inter/) as default font
 
-## Supported versions of Phoenix
+## Current supported versions of Phoenix
 
-- `1.7`
+- `1.7.1`
 
 > Umbrella projects are not supported for now.
 
