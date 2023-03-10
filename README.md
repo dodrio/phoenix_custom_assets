@@ -15,6 +15,7 @@
     - `@tailwindcss/aspect-ratio`
     - `@tailwindcss/line-clamp`
   - set [Inter var](https://rsms.me/inter/) as default font
+- Heroicons
 
 ## Current supported versions of Phoenix
 
@@ -41,7 +42,7 @@ $ svn export \
 
 ### 2. remove original esbuild and tailwind related code
 
-Remove `:esbuild` in `mix.exs`:
+Remove `:esbuild` and `:tailwind` in `mix.exs`:
 
 ```diff
 - {:esbuild, "~> 0.5", runtime: Mix.env() == :dev},
