@@ -123,7 +123,11 @@ config :hello, HelloWeb.Endpoint,
 +/priv/static/
 ```
 
-### 4. Last
+### 4. Cleanup `priv/static/`
+
+Just remove it.
+
+### 5. Last
 
 Clean `mix.lock`:
 
