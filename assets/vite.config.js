@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import mergeOptions from 'merge-options'
 
 import resolveConfig from 'tailwindcss/resolveConfig'
-import tailwindConfig from './tailwind.config.cjs'
+import tailwindConfig from './tailwind.config'
 
 import pcImport from 'postcss-import'
 import pcAutoprefixer from 'autoprefixer'

@@ -1,13 +1,13 @@
 // See the Tailwind configuration guide for advanced usage
 // https://tailwindcss.com/docs/configuration
 
-const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
-const plugin = require('tailwindcss/plugin')
-const fs = require('fs')
-const path = require('path')
+import defaultTheme from 'tailwindcss/defaultTheme'
+import colors from 'tailwindcss/colors'
+import plugin from 'tailwindcss/plugin'
+import fs from 'fs'
+import path from 'path'
 
-module.exports = {
+export default {
   content: ['../lib/*/**/*.*ex', './{global,lib,pages}/**/*.js'],
   theme: {
     extend: {
