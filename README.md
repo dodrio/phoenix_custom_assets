@@ -20,6 +20,7 @@
 ## Current supported versions of Phoenix
 
 - `1.7.1`
+- `1.7.2`
 
 > Umbrella projects are not supported for now.
 
