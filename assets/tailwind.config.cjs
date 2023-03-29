@@ -29,7 +29,6 @@ module.exports = {
     require('@tailwindcss/typography')({ target: 'legacy' }),
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/line-clamp'),
     // Allows prefixing tailwind classes with LiveView classes to add rules
     // only when LiveView classes are applied, for example:
     //
