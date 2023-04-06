@@ -133,7 +133,7 @@ Just remove it.
 Clean `mix.lock`:
 
 ```
-$ mix deps.clean --unused --unlock
+$ mix deps.clean --unused
 ```
 
 ## License
