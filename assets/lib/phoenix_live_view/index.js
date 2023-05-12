@@ -8,7 +8,31 @@ import tailwindColors from '../tailwind/colors'
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
 
-const liveSocket = new LiveSocket('/live', Socket, {
+// If the Phoenix endpoint is not served on /, you should set `data-base-path` attribute
+// on the root template. For example:
+//
+//   <html data-base-path={get_base_path()}>
+//
+// The implementation of `get_base_path/0` can be something like:
+//
+//   defmodule DemoWeb.Layouts do
+//     use DemoWeb, :html
+//
+//     embed_templates "layouts/*"
+//
+//     # ...
+//     defp get_base_path() do
+//       :demo
+//       |> Application.get_env(DemoWeb.Endpoint)
+//       |> get_in([:url, :path])
+//       |> then(&(&1 || ""))
+//       |> String.trim_trailing("/")
+//     end
+//   end
+//
+const basePath = document.querySelector('html').dataset.basePath || ''
+
+const liveSocket = new LiveSocket(`${basePath}/live`, Socket, {
   params: { _csrf_token: csrfToken },
 })
 
