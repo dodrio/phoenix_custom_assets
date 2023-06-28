@@ -3,7 +3,13 @@ defmodule HelloWeb.ExampleLive do
 
   def render(assigns) do
     ~H"""
-    Hello, Example Live.
+    <div class="font-sans">
+      Hello, font-sans.
+    </div>
+
+    <div class="font-mono">
+      Hello, font-mono.
+    </div>
     """
   end
 end
