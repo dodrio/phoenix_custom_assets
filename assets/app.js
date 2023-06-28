@@ -1,5 +1,5 @@
-import '@fontsource/inter/variable.css'
-import '@fontsource/jetbrains-mono/variable.css'
+import '@fontsource-variable/inter'
+import '@fontsource-valiable/jetbrains-mono'
 
 import './lib/phoenix'
 import './lib/phoenix_live_view'

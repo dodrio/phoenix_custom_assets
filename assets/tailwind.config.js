@@ -12,8 +12,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
-        mono: ['JetBrains MonoVariable', ...defaultTheme.fontFamily.mono],
+        sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
+        mono: ['JetBrains Mono Variable', ...defaultTheme.fontFamily.mono],
       },
       colors: {
         brand: '#FD4F00',
