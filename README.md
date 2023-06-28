@@ -97,12 +97,6 @@ Remove related config in `config/config.exs`:
 -
 ```
 
-Remove related comments in `config/dev.exs`:
-
-```diff
-- For example, we use it with esbuild to bundle .js and .css sources.
-```
-
 Adjust config of watchers in `config/dev.exs`
 
 ```elixir
