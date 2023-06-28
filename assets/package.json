@@ -5,7 +5,7 @@
     "watch": "vite build --mode development --watch"
   },
   "engines": {
-    "node": ">= 14.15.0"
+    "node": ">= 16.0.0"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.15",
