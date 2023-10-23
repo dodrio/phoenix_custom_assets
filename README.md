@@ -19,6 +19,8 @@
 
 ## Current supported versions of Phoenix
 
+- `1.7.8`
+- `1.7.7`
 - `1.7.6`
 - `1.7.5`
 - `1.7.4`

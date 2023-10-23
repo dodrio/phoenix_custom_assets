@@ -10,6 +10,7 @@ import Config
 # Configures the endpoint
 config :hello, HelloWeb.Endpoint,
   url: [host: "localhost"],
+  adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [
     formats: [html: HelloWeb.ErrorHTML, json: HelloWeb.ErrorJSON],
     layout: false

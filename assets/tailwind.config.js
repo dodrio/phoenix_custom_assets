@@ -55,7 +55,7 @@ export default {
         ['-mini', '/20/solid'],
       ]
       icons.forEach(([suffix, dir]) => {
-        fs.readdirSync(path.join(iconsDir, dir)).map((file) => {
+        fs.readdirSync(path.join(iconsDir, dir)).forEach((file) => {
           let name = path.basename(file, '.svg') + suffix
           values[name] = { name, fullPath: path.join(iconsDir, dir, file) }
         })
