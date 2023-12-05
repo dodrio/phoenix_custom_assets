@@ -6,6 +6,9 @@ import colors from 'tailwindcss/colors'
 import plugin from 'tailwindcss/plugin'
 import fs from 'fs'
 import path from 'path'
+import tailwindcssTypography from '@tailwindcss/typography'
+import tailwindcssForms from '@tailwindcss/forms'
+import tailwindcssAspectRatio from '@tailwindcss/aspect-ratio'
 
 export default {
   content: ['../lib/*/**/*.*ex', './{global,lib,pages}/**/*.js'],
@@ -26,9 +29,9 @@ export default {
     },
   },
   plugins: [
-    require('@tailwindcss/typography')({ target: 'legacy' }),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
+    tailwindcssTypography({ target: 'legacy' }),
+    tailwindcssForms,
+    tailwindcssAspectRatio,
     // Allows prefixing tailwind classes with LiveView classes to add rules
     // only when LiveView classes are applied, for example:
     //

@@ -95,7 +95,7 @@ export default defineConfig(({ mode: mode }) => {
           app: 'app.js',
         },
         output: {
-          intro: `window.TAILWIND_COLORS = ${JSON.stringify(tailwindColors)}`,
+          intro: `window.TAILWIND_COLORS = ${JSON.stringify(tailwindColors)};`,
           entryFileNames: `${assetsDir}/[name].js`,
           chunkFileNames: `${assetsDir}/[name].js`,
           assetFileNames: `${assetsDir}/[name][extname]`,
