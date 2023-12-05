@@ -44,6 +44,11 @@ It works by generating code into the your application instead of acting as a lib
 
 ```
 $ rm -rf assets # be careful
+
+# with GNU tar
+$ curl -L https://api.github.com/repos/c4710n/phoenix_custom_assets/tarball | tar -xvz --strip-components=1 --wildcards */assets
+
+# with BSD tar
 $ curl -L https://api.github.com/repos/c4710n/phoenix_custom_assets/tarball | tar -xvz --strip-components=1 --include="*/assets"
 ```
 
