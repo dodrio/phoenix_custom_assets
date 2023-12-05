@@ -43,10 +43,8 @@ It works by generating code into the your application instead of acting as a lib
 ### 1. replace `assets/`
 
 ```
-$ rm -rf assets
-$ svn export \
-  https://github.com/c4710n/phoenix_custom_assets/branches/main/assets \
-  assets
+$ rm -rf assets # be careful
+$ curl -L https://api.github.com/repos/c4710n/phoenix_custom_assets/tarball | tar -xvz --strip-components=1 --include="*/assets"
 ```
 
 ### 2. remove original esbuild and tailwind related code
