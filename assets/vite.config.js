@@ -67,6 +67,10 @@ export default defineConfig(({ mode: mode }) => {
       extensions: ['.js', '.css'],
     },
 
+    // use relative path in asset references, such as JS-imported asset URLs,
+    // CSS url() references.
+    base: './',
+
     // prevent clearing the terminal screen when logging certain messages
     clearScreen: false,
 
@@ -80,8 +84,8 @@ export default defineConfig(({ mode: mode }) => {
       outDir: outDir,
       emptyOutDir: false,
 
-      // Don't generate a manifest file, Phoenix has its own mechanism for generating cache manifest
-      // files
+      // Don't generate a manifest file, Phoenix has its own mechanism for
+      // generating cache manifest files.
       manifest: false,
 
       // Specify the directory to nest generated assets under build.outDir
