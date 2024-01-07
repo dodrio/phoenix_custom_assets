@@ -1,3 +1,9 @@
+> WARNING:
+>
+> This project is abandoned.
+>
+> José Valim mentioned a [build.js](https://github.com/livebook-dev/livebook/blob/8ba6baec3a78e01a07d2e64ed06c6ca4f42fde86/assets/build.js) in this [post](https://elixirforum.com/t/phoenix-and-the-asset-pipeline/60736/3). I will use esbuild in the future.
+
 # phoenix_custom_assets
 
 > Provides an alternative `assets/` of [Phoenix](https://www.phoenixframework.org/) for using [LiveView](https://hexdocs.pm/phoenix_live_view) and [TailwindCSS](https://tailwindcss.com/).
